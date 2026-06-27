@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediGo | Dashboard</title>
+    <title>Mis Citas | MediGo</title>
 
     <link rel="stylesheet" href="fronted.css">
+    <link rel="stylesheet" href="estilos.mis-citas.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -22,7 +23,6 @@
                 <span>MediGo</span>
             </div>
 
-            <!-- Usuario -->
             <div class="user-box">
 
                 <div class="avatar">
@@ -38,21 +38,23 @@
 
             <nav class="menu">
 
-                <a class="active">
+                <a href="fronted.html">
                     <i class="fa-solid fa-grid"></i>
                     Inicio
                 </a>
+
                 <a href="agendar.html">
                     <i class="fa-solid fa-calendar-plus"></i>
                     Agendar Cita
                 </a>
 
-                <a href="mis-citas.html">
+                <!-- ESTA ES LA OPCIÓN ACTIVA -->
+                <a href="mis-citas.html" class="active">
                     <i class="fa-solid fa-calendar"></i>
                     Mis Citas
                 </a>
 
-                <a>
+                <a href="Historial.html">
                     <i class="fa-solid fa-file-medical"></i>
                     Historial Médico
                 </a>
@@ -86,7 +88,7 @@
 
             <header class="topbar">
 
-                <h1>Inicio</h1>
+                <h1>Mis Citas</h1>
 
                 <div class="icons">
                     <i class="fa-solid fa-bell"></i>
@@ -95,68 +97,42 @@
 
             </header>
 
-            <!-- Bienvenida -->
-            <section class="welcome">
+            <!-- Filtros -->
+            <div class="filtros-citas">
 
-                <h2 id="nombreUsuario">Cargando...</h2>
+                <button class="filtro-btn active" data-filtro="todas" onclick="filtrarCitas('todas', this)">
+                    Todas
+                </button>
 
-                <p>
-                    Bienvenido/a a MediGo. Agenda tu primera consulta.
-                </p>
+                <button class="filtro-btn" data-filtro="pendiente" onclick="filtrarCitas('pendiente', this)">
+                    Pendientes
+                </button>
 
-            </section>
+                <button class="filtro-btn" data-filtro="confirmada" onclick="filtrarCitas('confirmada', this)">
+                    Confirmadas
+                </button>
 
-            <!-- Tarjetas -->
-            <section class="cards">
+                <button class="filtro-btn" data-filtro="finalizada" onclick="filtrarCitas('finalizada', this)">
+                    Finalizadas
+                </button>
 
-                <div class="card">
+            </div>
 
-                    <div class="icon orange">
-                        <i class="fa-regular fa-clock"></i>
-                    </div>
-
-                    <h3 id="citasActivas">0</h3>
-
-                    <p>Citas activas</p>
-
-                </div>
-
-                <div class="card">
-
-                    <div class="icon green">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-
-                    <h3 id="citasFinalizadas">0</h3>
-
-                    <p>Citas finalizadas</p>
-
-                </div>
-
-                <div class="card">
-
-                    <div class="icon blue">
-                        <i class="fa-solid fa-credit-card"></i>
-                    </div>
-
-                    <h3 id="totalPagado">S/ 0.00</h3>
-
-                    <p>Total pagado</p>
-
-                </div>
-
-            </section>
+            <!-- Lista de citas -->
+            <div id="lista-citas" class="lista-citas">
+                <p class="cargando-texto">Cargando tus citas...</p>
+            </div>
 
             <!-- Estado vacío -->
-            <section class="empty" style="display:none;">
+            <section class="empty" id="empty-citas" style="display:none;">
 
                 <i class="fa-regular fa-calendar-plus"></i>
 
                 <h3>No tienes citas registradas</h3>
 
-                <p>Tu historial médico aparecerá aquí.</p>
+                <p>Cuando agendes una consulta, aparecerá aquí.</p>
 
-                <button>
+                <button onclick="window.location.href='agendar.html'">
                     Agendar mi primera cita
                 </button>
 
@@ -166,7 +142,7 @@
 
     </div>
 
-    <script type="module" src="fronted.js"></script>
+    <script type="module" src="mis-citas.js"></script>
 
 </body>
 

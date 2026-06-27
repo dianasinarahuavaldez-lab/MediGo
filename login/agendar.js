@@ -14,10 +14,43 @@ let estado = {
     idDoctor: null
 };
 
+
+    async function cargarPaciente() {
+
+    console.log("===== AGENDAR =====");
+
+    const idPaciente = sessionStorage.getItem("id_paciente");
+
+    console.log("ID guardado:", idPaciente);
+
+    if (!idPaciente) {
+        window.location.href = "paciente.html";
+        return;
+    }
+
+    const { data: paciente, error } = await supabase
+        .from("paciente")
+        .select("*")
+        .eq("id_paciente", idPaciente)
+        .single();
+
+    console.log("Paciente:", paciente);
+    console.log("Error:", error);
+
+    if (error) return;
+
+    document.getElementById("nombreUsuarioSidebar").innerText =
+        paciente.nombre_completo;
+
+    document.getElementById("dniUsuario").innerText =
+        "DNI: " + paciente.dni;
+
+}
+
 // ---------- DECORATOR ----------
 class ConsultaBase {
     precio() {
-        return 35;
+        return 20;
     }
 }
 
@@ -37,6 +70,11 @@ let especialidades = [];
 let doctores = [];
 
 let horarios = [];
+
+let horaInicioSeleccionada = "";
+let horaFinSeleccionada = "";
+let duracionConsulta = 30;
+let archivoComprobante = null;
 
 async function cargarEspecialidades() {
 
@@ -129,20 +167,24 @@ function render() {
 }
 else if (estado.paso === 2) {
 
-    const cards = horarios.map(h => `
+   const cards = horarios.map(h => `
 
-        <div class="card"
-            onclick="guardar('fecha','${h.dia}',3)">
+    <div class="card"
+        onclick="seleccionarHorario(
+        '${h.dia}',
+        '${h.hora_inicio}',
+        '${h.hora_fin}'
+        )">
 
-            <strong>${h.dia}</strong>
+        <strong>${h.dia}</strong>
 
-            <br>
+        <br>
 
-            ${h.hora_inicio} - ${h.hora_fin}
+        ${h.hora_inicio} - ${h.hora_fin}
 
-        </div>
+    </div>
 
-    `).join("");
+`).join("");
 
     div.innerHTML = `
 
@@ -157,32 +199,32 @@ else if (estado.paso === 2) {
     `;
 }
 
-    else if (estado.paso === 3) {
+   else if (estado.paso === 3) {
 
-        div.innerHTML = `
+    const horas = generarHoras(
+        horaInicioSeleccionada,
+        horaFinSeleccionada
+    );
+
+    div.innerHTML = `
         <h2>Selecciona Hora</h2>
 
         <div class="grid-2">
 
-            <div class="card" onclick="guardar('hora','09:00 AM',4)">
-                09:00 AM
-            </div>
+            ${horas.map(h => `
 
-            <div class="card" onclick="guardar('hora','11:00 AM',4)">
-                11:00 AM
-            </div>
+                <div class="card"
+                    onclick="guardar('hora','${h}',4)">
 
-            <div class="card" onclick="guardar('hora','03:00 PM',4)">
-                03:00 PM
-            </div>
+                    ${h}
 
-            <div class="card" onclick="guardar('hora','05:00 PM',4)">
-                05:00 PM
-            </div>
+                </div>
+
+            `).join("")}
 
         </div>
-        `;
-    }
+    `;
+}
 
     else if (estado.paso === 4) {
 
@@ -203,7 +245,7 @@ else if (estado.paso === 2) {
 
             <div class="row">
                 <span>Cita</span>
-                <strong>${estado.fecha} - ${estado.hora}</strong>
+                <strong>${formatearFecha(estado.fecha)} - ${estado.hora}</strong>
             </div>
 
         </div>
@@ -260,6 +302,14 @@ else if (estado.paso === 2) {
 
         </div>
 
+        <div class="comprobante-container" style="margin-top: 16px;">
+            <label for="input-comprobante">
+                Sube tu captura del pago (comprobante)
+            </label>
+            <input type="file" id="input-comprobante" accept="image/*">
+            <p id="comprobante-nombre" style="font-size: 13px; color: #64748b;"></p>
+        </div>
+
         <button class="btn-final"
             id="btn-pagar"
             onclick="ejecutarPago()"
@@ -269,6 +319,14 @@ else if (estado.paso === 2) {
 
         </button>
         `;
+
+        document.getElementById("input-comprobante")
+            .addEventListener("change", (e) => {
+                const archivo = e.target.files[0];
+                archivoComprobante = archivo || null;
+                document.getElementById("comprobante-nombre").innerText =
+                    archivo ? "Archivo seleccionado: " + archivo.name : "";
+            });
     }
 }
 
@@ -295,9 +353,13 @@ async function guardarEspecialidad(id, nombre, precio) {
         precio
     );
 
-    await cargarDoctores(); // 👈 esto carga datos
+    const especialidad = especialidades.find(e => e.id_especialidad === id);
 
-    render(); // 👈 ya no necesitas estado.paso aquí
+    duracionConsulta = especialidad.duracion_minutos;
+
+    await cargarDoctores();
+
+    render();
 }
 
 async function guardarDoctor(idDoctor, nombre){
@@ -329,6 +391,59 @@ async function cargarHorarios(idDoctor){
     render();
 }
 
+function seleccionarHorario(dia, horaInicio, horaFin) {
+
+    const fecha = obtenerProximaFecha(dia);
+
+    estado.fecha = fecha;
+
+    horaInicioSeleccionada = horaInicio;
+    horaFinSeleccionada = horaFin;
+
+    estado.paso = 3;
+
+    render();
+}
+
+function obtenerProximaFecha(nombreDia) {
+
+    const dias = {
+        "Domingo": 0,
+        "Lunes": 1,
+        "Martes": 2,
+        "Miércoles": 3,
+        "Jueves": 4,
+        "Viernes": 5,
+        "Sábado": 6
+    };
+
+    const hoy = new Date();
+
+    const objetivo = dias[nombreDia];
+
+    let diferencia = objetivo - hoy.getDay();
+
+    if (diferencia < 0) {
+        diferencia += 7;
+    }
+
+    const fecha = new Date(hoy);
+
+    fecha.setDate(hoy.getDate() + diferencia);
+
+    return fecha.toISOString().split("T")[0];
+}
+
+function formatearFecha(fecha) {
+
+    return new Date(fecha).toLocaleDateString("es-PE", {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    });
+
+}
+
 function obtenerIcono(nombre) {
 
     switch (nombre) {
@@ -355,6 +470,37 @@ function obtenerIcono(nombre) {
             return "fas fa-user-md";
     }
 
+}
+
+function generarHoras(inicio, fin) {
+
+    const horas = [];
+
+    let [h, m] = inicio.split(":").map(Number);
+    const [hf, mf] = fin.split(":").map(Number);
+
+    while (true) {
+
+        const inicioMin = h * 60 + m;
+        const finHorario = hf * 60 + mf;
+
+        // La cita debe terminar antes de que acabe el horario
+        if (inicioMin + duracionConsulta > finHorario) {
+            break;
+        }
+
+        horas.push(
+            `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`
+        );
+
+        // duración de la consulta + 10 minutos de descanso
+        let siguiente = inicioMin + duracionConsulta + 10;
+
+        h = Math.floor(siguiente / 60);
+        m = siguiente % 60;
+    }
+
+    return horas;
 }
 
 async function cargarDoctores() {
@@ -392,7 +538,71 @@ function seleccionarMetodo(card, metodo) {
     document.getElementById("btn-pagar").disabled = false;
 }
 
-function ejecutarPago() {
+// ---------- PAGO Y GUARDADO EN BASE DE DATOS ----------
+async function ejecutarPago() {
+
+    const idPaciente = sessionStorage.getItem("id_paciente");
+
+    // 1) Insertar la cita
+    const { data: citaCreada, error: errorCita } = await supabase
+        .from("cita")
+        .insert({
+            id_paciente: idPaciente,
+            id_doctor: estado.idDoctor,
+            id_especialidad: estado.idEspecialidad,
+            fecha: estado.fecha,
+            hora: estado.hora,
+            motivo: estado.detalle
+        })
+        .select()
+        .single();
+
+    if (errorCita) {
+        console.error(errorCita);
+        alert("Ocurrió un error al guardar la cita. Intenta de nuevo.");
+        return;
+    }
+
+    // 2) Subir el comprobante (si el paciente seleccionó una imagen)
+    let urlComprobante = null;
+
+    if (archivoComprobante) {
+
+        const extension = archivoComprobante.name.split(".").pop();
+        const nombreArchivo = `cita_${citaCreada.id_cita}_${Date.now()}.${extension}`;
+
+        const { error: errorSubida } = await supabase.storage
+            .from("comprobantes")
+            .upload(nombreArchivo, archivoComprobante);
+
+        if (errorSubida) {
+            console.error(errorSubida);
+            alert("La cita se guardó, pero hubo un error al subir el comprobante.");
+            return;
+        }
+
+        const { data: urlData } = supabase.storage
+            .from("comprobantes")
+            .getPublicUrl(nombreArchivo);
+
+        urlComprobante = urlData.publicUrl;
+    }
+
+    // 3) Insertar el pago asociado a esa cita
+    const { error: errorPago } = await supabase
+        .from("pago")
+        .insert({
+            id_cita: citaCreada.id_cita,
+            metodo_pago: estado.metodo,
+            monto: consultaActual.precio(),
+            comprobante: urlComprobante
+        });
+
+    if (errorPago) {
+        console.error(errorPago);
+        alert("La cita se guardó, pero hubo un error al registrar el pago.");
+        return;
+    }
 
     alert("Pago confirmado por S/. " + consultaActual.precio());
 
@@ -404,5 +614,6 @@ window.guardarEspecialidad = guardarEspecialidad;
 window.seleccionarMetodo = seleccionarMetodo;
 window.ejecutarPago = ejecutarPago;
 window.guardarDoctor = guardarDoctor;
-
+window.seleccionarHorario = seleccionarHorario;
+cargarPaciente();
 cargarEspecialidades();
