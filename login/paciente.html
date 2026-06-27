@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Paciente | MediGo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos-login.css">
+
+    <style>
+        .icono-titulo { background-color: #0066CC; }
+        .titulo-seccion h4 { color: #0066CC; }
+        .boton-login { background-color: #0066CC; }
+        .enlace-olvido { color: #6b7280; }
+        .enlace-cuenta { color: #0066CC; }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor-login">
+
+    <span class="cerrar">×</span>
+
+    <div class="encabezado">
+
+        <div class="icono-titulo">
+            <i class="fa fa-user"></i>
+        </div>
+
+        <div class="titulo-seccion">
+            <h4>Portal Paciente</h4>
+            <h2>Iniciar sesión</h2>
+        </div>
+
+    </div>
+
+    <form id="formLogin">
+
+        <div class="grupo-input">
+
+            <label>DNI *</label>
+
+            <div class="input-con-icono">
+
+                <i class="fa fa-user-o"></i>
+
+                <input
+                    type="text"
+                    id="dni"
+                    maxlength="8"
+                    placeholder="12345678"
+                    required>
+
+            </div>
+
+        </div>
+
+        <div class="grupo-input">
+
+            <label>Contraseña *</label>
+
+            <div class="input-con-icono">
+
+                <i class="fa fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Ingrese su contraseña"
+                    required>
+
+            </div>
+
+        </div>
+
+        <button type="submit" class="boton-login">
+            Iniciar sesión
+        </button>
+
+    </form>
+
+    <div class="enlaces">
+        <a href="#" class="enlace-olvido">¿Olvidaste tu contraseña?</a>
+        <a href="registro-paciente.html" class="enlace-cuenta">
+            Crear cuenta
+        </a>
+    </div>
+
+    <div class="volver">
+        <a href="../index.html">
+            ← Volver a la página principal
+        </a>
+    </div>
+
+</div>
+
+<script type="module">
+
+import { supabase } from "../supabase.js";
+
+const form = document.getElementById("formLogin");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const dni = document.getElementById("dni").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    console.log("Intentando iniciar sesión...");
+
+    const { data: paciente, error } = await supabase
+        .from("paciente")
+        .select("*")
+        .eq("dni", dni)
+        .eq("contrasena", password)
+        .single();
+
+
+    if (error || !paciente) {
+        alert("DNI o contraseña incorrectos.");
+        return;
+    }
+
+    sessionStorage.setItem("id_paciente", paciente.id_paciente);
+
+    window.location.href = "fronted.html";
+
+});
+
+</script>
+
+</body>
+</html>

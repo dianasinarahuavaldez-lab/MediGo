@@ -1,0 +1,160 @@
+/* ===========================
+   CONTENIDO AGENDAR CITA
+=========================== */
+
+.modal-content{
+    background:#fff;
+    width:100%;
+    max-width:900px;
+    margin:30px auto;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+/* Barra de progreso */
+
+.progress-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:35px;
+}
+
+.step-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    flex:1;
+    position:relative;
+}
+
+.step-dot{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#e5e7eb;
+    color:#64748b;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:600;
+    z-index:2;
+}
+
+.step-dot.active{
+    background:#2563eb;
+    color:#fff;
+}
+
+.step-item span{
+    margin-top:8px;
+    font-size:13px;
+    color:#64748b;
+}
+
+.line{
+    flex:1;
+    height:2px;
+    background:#dbeafe;
+}
+
+/* Tarjetas */
+
+.grid-2{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.card{
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    padding:25px;
+    cursor:pointer;
+    transition:.25s;
+    background:#fff;
+}
+
+.card:hover{
+    border-color:#2563eb;
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.card i{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.card strong{
+    display:block;
+    margin-top:6px;
+    color:#2563eb;
+}
+
+/* Resumen */
+
+.resumen-container{
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    margin:12px 0;
+}
+
+textarea{
+    width:100%;
+    min-height:120px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    padding:15px;
+    resize:none;
+    margin-top:20px;
+}
+
+/* Pago */
+
+.pay-card{
+    border:1px solid #d1d5db;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.pay-card:hover{
+    border-color:#2563eb;
+}
+
+/* Botón */
+
+.btn-final{
+    margin-top:25px;
+    width:100%;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:16px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.btn-final:hover{
+    background:#1d4ed8;
+}
+
+.main{
+    flex:1;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Paciente | MediGo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos-login.css">
+</head>
+
+<body>
+
+    <div class="contenedor-login">
+
+        <div class="encabezado">
+            <div class="icono-titulo">
+                <i class="fa fa-user-plus"></i>
+            </div>
+
+            <div class="titulo-seccion">
+                <h2>Registro de Paciente</h2>
+            </div>
+        </div>
+
+        <form id="formRegistro">
+            <h3 id="tituloPaso">Paso 1 de 2 - Verificación de identidad</h3>
+
+            <div id="paso1">
+
+                <!-- DNI -->
+                <div class="grupo-input">
+                    <label>DNI *</label>
+
+                    <div class="fila-dni">
+
+                        <div class="input-con-icono">
+                            <i class="fa fa-id-card"></i>
+
+                            <input type="text" id="dni" maxlength="8" placeholder="Ingresar DNI">
+                        </div>
+
+                        <button type="button" class="boton-buscar" onclick="buscarDNI()">
+                            Buscar
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Nombres -->
+                <div class="grupo-input">
+                    <label>Nombres *</label>
+
+                    <div class="input-con-icono">
+                        <i class="fa fa-user"></i>
+
+                        <input type="text" id="nombres" readonly placeholder="Se completará automáticamente">
+                    </div>
+                </div>
+
+                <!-- Apellido paterno -->
+                <div class="grupo-input">
+                    <label>Apellido paterno *</label>
+
+                    <div class="input-con-icono">
+                        <i class="fa fa-user"></i>
+
+                        <input type="text" id="apellidoPaterno" readonly placeholder="Se completará automáticamente">
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+
+
+                    <label>Apellido materno *</label>
+
+                    <div class="input-con-icono">
+                        <i class="fa fa-user"></i>
+
+                        <input type="text" id="apellidoMaterno" readonly placeholder="Se completará automáticamente">
+                    </div>
+                </div>
+                <!-- Código de verificación DNI -->
+                <div class="grupo-input">
+                    <label>Código de verificación DNI *</label>
+
+                    <div class="fila-dni">
+
+                        <div class="input-con-icono">
+                            <i class="fa fa-shield"></i>
+
+                            <input type="text" id="codigoVerificacion" maxlength="1"
+                                placeholder="Ingrese el número de verificación">
+                        </div>
+
+                        <button type="button" class="boton-buscar" onclick="validarIdentidad()">
+                            Validar
+                        </button>
+
+                    </div>
+                </div>
+
+                <button type="button" id="btnValidar" class="boton-login" onclick="mostrarPaso2()" disabled>
+                    Continuar
+                </button>
+
+
+            </div>
+
+            <div id="paso2" style="display:none;">
+
+                <!-- Teléfono -->
+                <div class="grupo-input">
+                    <label>Teléfono *</label>
+
+                    <div class="fila-dni">
+
+                        <div class="input-con-icono">
+                            <i class="fa fa-phone"></i>
+
+                            <input type="text" id="telefono" maxlength="9" placeholder="Ingresar número celular">
+                        </div>
+
+                        <button type="button" class="boton-buscar" onclick="enviarCodigoWhatsapp()">
+                            Validar
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Código de validación -->
+                <div class="grupo-input">
+
+                    <label>Código de validación *</label>
+
+                    <div class="fila-dni">
+
+                        <div class="input-con-icono">
+                            <i class="fa fa-shield"></i>
+
+                            <input type="text" id="codigoWhatsapp" maxlength="6" placeholder="Código">
+                        </div>
+
+                        <button type="button" class="boton-buscar" onclick="validarCodigoWhatsapp()">
+                            Confirmar
+                        </button>
+
+                    </div>
+
+                    <small id="mensajeWhatsapp" style="display:block; margin-top:8px;"></small>
+
+                </div>
+
+                <!-- Correo -->
+                <div class="grupo-input">
+                    <label>Correo electrónico *</label>
+
+                    <div class="input-con-icono">
+                        <i class="fa fa-envelope"></i>
+
+                        <input type="email" id="correo" placeholder="Ingresar Correo" disabled>
+                    </div>
+                </div>
+
+                <!-- Fecha -->
+                <div class="grupo-input">
+                    <label>Fecha de nacimiento *</label>
+
+                    <input type="date" id="fechaNacimiento" disabled>
+                </div>
+
+                <!-- Dirección -->
+                <div class="grupo-input">
+                    <label>Dirección *</label>
+
+                    <div class="input-con-icono">
+                        <i class="fa fa-home"></i>
+
+                        <input type="text" id="direccion" placeholder="Ingrese su dirección" disabled>
+                    </div>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="grupo-input">
+                    <label>Contraseña *</label>
+
+                    <div class="input-con-icono">
+                        <i class="fa fa-lock"></i>
+
+                        <input type="password" id="password" disabled>
+                    </div>
+                </div>
+
+                <!-- Confirmar contraseña -->
+                <div class="grupo-input">
+                    <label>Confirmar contraseña *</label>
+
+                    <div class="input-con-icono">
+                        <i class="fa fa-lock"></i>
+
+                        <input type="password" id="confirmarPassword" disabled>
+                    </div>
+                </div>
+                <button type="button" id="btnHistorial" class="boton-login" onclick="irHistorial()">
+
+                    Siguiente: Historial Médico
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script type="module" src="registro-paciente.js"></script>
+
+</body>
+
+</html>

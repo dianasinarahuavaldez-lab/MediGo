@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitud de Registro</title>
+    <link rel="stylesheet" href="estilos-login.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Solicitar Registro</h2>
+    <form action="procesar_registro" method="POST">
+        <div class="form-group"><label>Nombre completo *</label><input type="text" name="nombre" required></div>
+        <div class="form-group"><label>Correo *</label><input type="email" name="correo" required></div>
+        <div class="form-group"><label>Contraseña *</label><input type="password" name="password" required></div>
+        <div class="form-group"><label>Teléfono *</label><input type="tel" name="telefono" required></div>
+        <div class="form-group"><label>Cargo *</label>
+            <select name="cargo">
+                <option value="Administrador">Administrador</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-submit">Enviar Solicitud</button>
+    </form>
+</div>
+</body>
+</html>

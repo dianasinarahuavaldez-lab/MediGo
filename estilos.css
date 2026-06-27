@@ -1,0 +1,807 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    color: #1A202C;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Colores personalizados */
+:root {
+    --primary: #0066CC;
+    --secondary: #00B47D;
+    --lightBlue: #E6F2FF;
+    --lightGreen: #E6FAF2;
+    --lightGray: #F8F9FA;
+    --dark: #1A202C;
+    --gray: #6B7280;
+}
+
+/* Barra de navegación */
+nav {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    padding: 12px 0;
+}
+
+.nav-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icono {
+    background-color: var(--primary);
+    color: white;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.logo-texto {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.nav-enlaces {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-enlaces a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-enlaces a:hover {
+    color: var(--primary);
+}
+
+.nav-botones {
+    display: flex;
+    gap: 12px;
+}
+
+.boton {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: none;
+    font-size: 15px;
+}
+
+.boton-borde {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.boton-borde:hover {
+    background-color: var(--lightBlue);
+}
+
+.boton-primario {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.boton-primario:hover {
+    background-color: rgba(0, 180, 125, 0.9);
+}
+
+.boton-oscuro {
+    background-color: var(--dark);
+    color: white;
+}
+
+.boton-oscuro:hover {
+    background-color: rgba(26, 32, 44, 0.9);
+}
+
+/* Sección Hero */
+#inicio {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    background: linear-gradient(180deg, rgba(230, 242, 255, 0.3) 0%, white 100%);
+}
+
+.hero-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.etiqueta {
+    background-color: var(--lightBlue);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.texto-azul {
+    color: var(--primary);
+}
+
+.descripcion {
+    color: var(--gray);
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.botones-accion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.boton-grande {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.boton-grande.primario {
+    background-color: var(--primary);
+    color: white;
+}
+
+.boton-grande.primario:hover {
+    background-color: rgba(0, 102, 204, 0.9);
+}
+
+.boton-grande.borde {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.boton-grande.borde:hover {
+    background-color: var(--lightBlue);
+}
+
+.boton-grande.verde {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.boton-grande.verde:hover {
+    background-color: rgba(0, 180, 125, 0.9);
+}
+
+.accesos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.boton-acceso {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.boton-paciente {
+    border: 1px solid rgba(0, 102, 204, 0.3);
+    color: var(--primary);
+}
+
+.boton-paciente:hover {
+    background-color: var(--lightBlue);
+}
+
+.boton-doctor {
+    border: 1px solid rgba(0, 180, 125, 0.3);
+    color: var(--secondary);
+}
+
+.boton-doctor:hover {
+    background-color: var(--lightGreen);
+}
+
+.boton-admin {
+    border: 1px solid #D1D5DB;
+    color: #6B7280;
+}
+
+.boton-admin:hover {
+    background-color: var(--lightGray);
+}
+
+.imagen-hero {
+    position: relative;
+}
+
+.imagen-principal {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.tarjeta-flotante-1 {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tarjeta-flotante-2 {
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icono-tarjeta {
+    background-color: var(--lightBlue);
+    color: var(--primary);
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.icono-tarjeta.verde {
+    background-color: var(--lightGreen);
+    color: var(--secondary);
+}
+
+.texto-tarjeta p {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.texto-tarjeta small {
+    color: #6B7280;
+    font-size: 12px;
+}
+
+/* Estadísticas */
+.estadisticas {
+    background: linear-gradient(90deg, var(--primary) 0%, #0099E5 100%);
+    color: white;
+    padding: 60px 0;
+}
+
+.grid-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.numero {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.etiqueta-numero {
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+}
+
+/* Sección Cómo funciona */
+#como-funciona {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 60px;
+}
+
+.pasos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    position: relative;
+}
+
+.pasos::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 25%;
+    right: 25%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    z-index: 0;
+}
+
+.paso {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.paso-icono {
+    width: 80px;
+    height: 80px;
+    background-color: var(--lightBlue);
+    color: var(--primary);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+    position: relative;
+}
+
+.paso-icono.verde {
+    background-color: var(--lightGreen);
+    color: var(--secondary);
+}
+
+.numero-paso {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.numero-paso.verde {
+    background-color: var(--secondary);
+}
+
+.paso h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.paso p {
+    color: var(--gray);
+}
+
+/* Por qué elegirnos */
+#por-que {
+    padding: 80px 0;
+    background-color: rgba(248, 249, 250, 0.5);
+}
+
+.ventajas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.tarjeta-ventaja {
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.tarjeta-ventaja:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.icono-ventaja {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 20px;
+}
+
+.azul {
+    background-color: var(--lightBlue);
+    color: var(--primary);
+}
+
+.verde {
+    background-color: var(--lightGreen);
+    color: var(--secondary);
+}
+
+.morado {
+    background-color: #F3E8FF;
+    color: #7E22CE;
+}
+
+.rojo {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+.naranja {
+    background-color: #FFEDD5;
+    color: #EA580C;
+}
+
+.tarjeta-ventaja h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.tarjeta-ventaja p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+/* Especialidades */
+#especialidades {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.grid-especialidades {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+}
+
+.tarjeta-especialidad {
+    padding: 16px;
+    border-radius: 12px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.tarjeta-especialidad:hover {
+    background-color: #FEF2F2;
+}
+
+.tarjeta-especialidad:nth-child(2):hover {
+    background-color: #FAF5FF;
+}
+
+.tarjeta-especialidad:nth-child(3):hover {
+    background-color: #FFFBEB;
+}
+
+.tarjeta-especialidad:nth-child(4):hover {
+    background-color: #EEF2FF;
+}
+
+.icono-especialidad {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 24px;
+}
+
+.rojo-claro {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+.morado-claro {
+    background-color: #F3E8FF;
+    color: #7E22CE;
+}
+
+.amarillo-claro {
+    background-color: #FFFBEB;
+    color: #CA8A04;
+}
+
+.indigo-claro {
+    background-color: #EEF2FF;
+    color: #4F46E5;
+}
+
+.tarjeta-especialidad h3 {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.ver-doctores {
+    color: #DC2626;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.ver-doctores.morado {
+    color: #7E22CE;
+}
+
+.ver-doctores.amarillo {
+    color: #CA8A04;
+}
+
+.ver-doctores.indigo {
+    color: #4F46E5;
+}
+
+.ver-doctores:hover {
+    text-decoration: underline;
+}
+
+/* Quiénes somos */
+#quienes-somos {
+    padding: 80px 0;
+    background-color: rgba(248, 249, 250, 0.5);
+}
+
+.nosotros-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.imagen-nosotros {
+    position: relative;
+}
+
+.imagen-nosotros img {
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.calificacion {
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 12px;
+}
+
+.estrellas {
+    color: #F59E0B;
+    margin-bottom: 4px;
+}
+
+.texto-calif {
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+}
+
+.texto-pequeno {
+    font-size: 12px;
+    color: var(--gray);
+    text-align: center;
+}
+
+.nosotros-contenido h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.nosotros-contenido p {
+    color: var(--gray);
+    margin-bottom: 24px;
+}
+
+.lista-puntos {
+    margin-bottom: 24px;
+}
+
+.lista-puntos li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.icono-lista {
+    background-color: var(--lightBlue);
+    color: var(--primary);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* Contacto */
+#contacto {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.grid-contacto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tarjeta-contacto {
+    text-align: center;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #F3F4F6;
+}
+
+.icono-contacto {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 20px;
+}
+
+.rosa {
+    background-color: #FCE7F3;
+    color: #BE185D;
+}
+
+.tarjeta-contacto h3 {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.tarjeta-contacto p {
+    color: var(--gray);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 32px 0;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.logo-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.derechos {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+}
+
+.eslogan {
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .nav-enlaces {
+        display: none;
+    }
+
+    .hero-contenido,
+    .nosotros-contenido {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-estadisticas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pasos,
+    .ventajas,
+    .grid-especialidades,
+    .grid-contacto {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pasos::before {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-estadisticas,
+    .pasos,
+    .ventajas,
+    .grid-especialidades,
+    .grid-contacto {
+        grid-template-columns: 1fr;
+    }
+}

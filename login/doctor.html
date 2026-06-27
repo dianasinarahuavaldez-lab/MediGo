@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Médico | MediGo</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos-login.css">
+    <style>
+        .icono-titulo { background-color: #00B47D; }
+        .titulo-seccion h4 { color: #00B47D; }
+        .caja-demo { background-color: #e6faf2; color: #007a54; }
+        .boton-login { background-color: #00B47D; }
+        .enlace-olvido { color: #6b7280; }
+        .enlace-registro { color: #00B47D; }
+    </style>
+</head>
+<body>
+    <div class="contenedor-login">
+        <span class="cerrar">×</span>
+
+        <div class="encabezado">
+            <div class="icono-titulo">
+                <i class="fa fa-stethoscope"></i>
+            </div>
+            <div class="titulo-seccion">
+                <h4>Portal Médico</h4>
+                <h2>Acceso médico</h2>
+            </div>
+        </div>
+        
+        <form>
+            <div class="grupo-input">
+                <label>N° CMP *</label>
+                <div class="input-con-icono">
+                    <i class="fa fa-user-o"></i>
+                    <input type="text" placeholder="CMP-XXXXX">
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <label>Contraseña *</label>
+                <div class="input-con-icono">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" placeholder="">
+                </div>
+            </div>
+
+            <button type="submit" class="boton-login">Acceder al portal médico</button>
+        </form>
+
+        <div class="enlaces">
+            <a href="#" class="enlace-olvido">¿Olvidaste tu contraseña?</a>
+            <a href="#" class="enlace-registro">Registrarme</a>
+        </div>
+
+        <div class="volver">
+            <a href="../index.html">← Volver a la página principal</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fb;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 700px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.encabezado {
+    padding: 30px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.portal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1d72b8;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.portal i {
+    font-size: 24px;
+}
+
+.encabezado h1 {
+    color: #0f172a;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.formulario {
+    padding: 30px;
+}
+
+.aviso {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #eef4ff;
+    border: 1px solid #c7d7ff;
+    color: #2563eb;
+    padding: 18px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.aviso i {
+    margin-top: 2px;
+}
+
+.grupo {
+    margin-bottom: 22px;
+}
+
+.grupo label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid #dbe2ea;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 16px;
+    color: #334155;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #1d72b8;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.botones {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-atras,
+.btn-crear {
+    flex: 1;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-atras {
+    background: white;
+    border: 1px solid #dbe2ea;
+    color: #1e293b;
+}
+
+.btn-atras:hover {
+    background: #f8fafc;
+}
+
+.btn-crear {
+    border: none;
+    background: #1d72b8;
+    color: white;
+}
+
+.btn-crear:hover {
+    background: #155d96;
+}

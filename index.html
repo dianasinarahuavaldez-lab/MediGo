@@ -1,0 +1,372 @@
+   <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGo - Atención Médica Virtual</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container nav-contenido">
+            <div class="logo">
+                <div class="logo-icono">
+                    <i class="fa fa-heartbeat"></i>
+                </div>
+                <span class="logo-texto">MediGo</span>
+            </div>
+
+            <div class="nav-enlaces">
+                <a href="#inicio">Inicio</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#especialidades">Especialidades</a>
+                <a href="#quienes-somos">Quiénes somos</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+
+            <!-- 👉 BOTONES DE ARRIBA (IGUAL QUE TU IMAGEN) 👈 -->
+            <div class="nav-botones">
+                <a href="login/paciente.html" class="boton boton-borde">Paciente</a>
+                <a href="login/doctor.html" class="boton boton-primario">Doctor</a>
+                <a href="login/admin.html" class="boton boton-oscuro">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <section id="inicio">
+        <div class="container hero-contenido">
+            <div>
+                <span class="etiqueta">Plataforma médica certificada y segura</span>
+                <h1>MediGo<br>
+                    <span class="texto-azul">ATENCIÓN MÉDICA RÁPIDA Y SEGURA, 24/7.</span>
+                </h1>
+                <p class="descripcion">Agenda consultas virtuales con los mejores especialistas desde la comodidad de tu hogar. Tecnología médica moderna para el Perú.</p>
+
+                <div class="botones-accion">
+                    <button class="boton-grande primario">
+                        <i class="fa fa-calendar"></i> Agendar cita
+                    </button>
+                    <button class="boton-grande borde">
+                        <i class="fa fa-video-camera"></i> Consulta virtual
+                    </button>
+                </div>
+
+                <!-- 👉 BOTONES DE ABAJO (IGUAL QUE TU IMAGEN) 👈 -->
+                <div class="accesos">
+                    <a href="login/paciente.html" class="boton-acceso boton-paciente">
+                        <i class="fa fa-user"></i> Acceder como Paciente
+                    </a>
+                    <a href="login/doctor.html" class="boton-acceso boton-doctor">
+                        <i class="fa fa-user-md"></i> Acceder como Doctor
+                    </a>
+                    <a href="login/admin.html" class="boton-acceso boton-admin">
+                        <i class="fa fa-cog"></i> Acceder como Admin
+                    </a>
+                </div>
+            </div>
+
+            <div class="imagen-hero">
+                <div class="imagen-principal">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Doctor">
+                </div>
+                <div class="tarjeta-flotante-1">
+                    <div class="icono-tarjeta">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+                    <div class="texto-tarjeta">
+                        <p>150+ Doctores</p>
+                        <small>Certificados CMP</small>
+                    </div>
+                </div>
+                <div class="tarjeta-flotante-2">
+                    <div class="icono-tarjeta verde">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <div class="texto-tarjeta">
+                        <p>Cita confirmada</p>
+                        <small>Hoy 3:00 PM · Virtual</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="estadisticas">
+        <div class="container grid-estadisticas">
+            <div>
+                <p class="numero">3,568+</p>
+                <p class="etiqueta-numero">Consultas realizadas</p>
+            </div>
+            <div>
+                <p class="numero">2,500+</p>
+                <p class="etiqueta-numero">Pacientes atendidos</p>
+            </div>
+            <div>
+                <p class="numero">150+</p>
+                <p class="etiqueta-numero">Doctores especialistas</p>
+            </div>
+            <div>
+                <p class="numero">24/7</p>
+                <p class="etiqueta-numero">Disponibilidad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section id="como-funciona">
+        <div class="container">
+            <h2 class="titulo-seccion">Cómo funciona</h2>
+            <p class="subtitulo-seccion">Tres pasos simples para acceder a atención médica de calidad</p>
+
+            <div class="pasos">
+                <div class="paso">
+                    <div class="paso-icono">
+                        <i class="fa fa-user"></i>
+                        <span class="numero-paso">01</span>
+                    </div>
+                    <h3>Crea tu cuenta</h3>
+                    <p>Regístrate con tu DNI, completa tu perfil e historial médico en minutos.</p>
+                </div>
+
+                <div class="paso">
+                    <div class="paso-icono verde">
+                        <i class="fa fa-stethoscope"></i>
+                        <span class="numero-paso verde">02</span>
+                    </div>
+                    <h3>Elige tu especialista</h3>
+                    <p>Explora especialidades, selecciona tu doctor y el horario disponible ideal.</p>
+                </div>
+
+                <div class="paso">
+                    <div class="paso-icono">
+                        <i class="fa fa-video-camera"></i>
+                        <span class="numero-paso">03</span>
+                    </div>
+                    <h3>Consulta virtual</h3>
+                    <p>Conéctate desde cualquier dispositivo y recibe atención médica de calidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Por qué elegirnos? -->
+    <section id="por-que">
+        <div class="container">
+            <h2 class="titulo-seccion">¿Por qué elegir MediGo?</h2>
+            <p class="subtitulo-seccion">La plataforma médica más confiable y fácil de usar del Perú</p>
+
+            <div class="ventajas">
+                <div class="tarjeta-ventaja">
+                    <div class="icono-ventaja azul">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <h3>Sin filas ni esperas</h3>
+                    <p>Agenda en segundos y consulta desde tu hogar.</p>
+                </div>
+
+                <div class="tarjeta-ventaja">
+                    <div class="icono-ventaja verde">
+                        <i class="fa fa-certificate"></i>
+                    </div>
+                    <h3>Doctores certificados CMP</h3>
+                    <p>Todos nuestros médicos están verificados y colegiados.</p>
+                </div>
+
+                <div class="tarjeta-ventaja">
+                    <div class="icono-ventaja azul">
+                        <i class="fa fa-shield"></i>
+                    </div>
+                    <h3>Pagos 100% seguros</h3>
+                    <p>Yape, Plin, transferencia o tarjeta con cifrado SSL.</p>
+                </div>
+
+                <div class="tarjeta-ventaja">
+                    <div class="icono-ventaja morado">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <h3>Historial médico digital</h3>
+                    <p>Accede a tus consultas y resultados en cualquier momento.</p>
+                </div>
+
+                <div class="tarjeta-ventaja">
+                    <div class="icono-ventaja rojo">
+                        <i class="fa fa-bolt"></i>
+                    </div>
+                    <h3>Disponible 24/7</h3>
+                    <p>Atención continua, sin importar la hora ni el lugar.</p>
+                </div>
+
+                <div class="tarjeta-ventaja">
+                    <div class="icono-ventaja naranja">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <h3>Privacidad garantizada</h3>
+                    <p>Tus datos están protegidos bajo estándares internacionales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Especialidades -->
+    <section id="especialidades">
+        <div class="container">
+            <h2 class="titulo-seccion">Especialidades Médicas</h2>
+            <p class="subtitulo-seccion">Contamos con especialistas en las principales áreas de la medicina</p>
+
+            <div class="grid-especialidades">
+                <div class="tarjeta-especialidad">
+                    <div class="icono-especialidad rojo-claro">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <h3>Cardiología</h3>
+                    <a href="#" class="ver-doctores">Ver doctores &rarr;</a>
+                </div>
+
+                <div class="tarjeta-especialidad">
+                    <div class="icono-especialidad morado-claro">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <h3>Dermatología</h3>
+                    <a href="#" class="ver-doctores morado">Ver doctores &rarr;</a>
+                </div>
+
+                <div class="tarjeta-especialidad">
+                    <div class="icono-especialidad amarillo-claro">
+                        <i class="fa fa-child"></i>
+                    </div>
+                    <h3>Pediatría</h3>
+                    <a href="#" class="ver-doctores amarillo">Ver doctores &rarr;</a>
+                </div>
+
+                <div class="tarjeta-especialidad">
+                    <div class="icono-especialidad indigo-claro">
+                        <i class="fa fa-brain"></i>
+                    </div>
+                    <h3>Psicología</h3>
+                    <a href="#" class="ver-doctores indigo">Ver doctores &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiénes somos -->
+    <section id="quienes-somos">
+        <div class="container nosotros-contenido">
+            <div class="imagen-nosotros">
+                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Equipo médico">
+                <div class="calificacion">
+                    <div class="estrellas">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="texto-calif">4.9/5.0</p>
+                    <p class="texto-pequeno">Satisfacción de pacientes</p>
+                </div>
+            </div>
+
+            <div>
+                <span class="etiqueta">Quiénes Somos</span>
+                <h2>Tu salud es nuestra prioridad número uno</h2>
+                <p>MediGo es una plataforma digital de salud que conecta pacientes con médicos especialistas certificados CMP, ofreciendo consultas virtuales de alta calidad desde cualquier lugar del Perú, respaldada por tecnología de vanguardia.</p>
+
+                <ul class="lista-puntos">
+                    <li>
+                        <div class="icono-lista">
+                            <i class="fa fa-shield"></i>
+                        </div>
+                        <span>Doctores verificados y colegiados por el CMP</span>
+                    </li>
+                    <li>
+                        <div class="icono-lista">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                        <span>Atención disponible 24/7 sin demoras</span>
+                    </li>
+                    <li>
+                        <div class="icono-lista">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <span>Historial médico digital y totalmente seguro</span>
+                    </li>
+                </ul>
+
+                <div class="botones-accion">
+                    <button class="boton-grande primario">
+                        Comenzar ahora &rarr;
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="titulo-seccion">Contáctanos</h2>
+            <p class="subtitulo-seccion">Estamos disponibles para ayudarte cuando lo necesites.</p>
+
+            <div class="grid-contacto">
+                <div class="tarjeta-contacto">
+                    <div class="icono-contacto azul">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <h3>Teléfono</h3>
+                    <p>+51 987 654 321</p>
+                </div>
+
+                <div class="tarjeta-contacto">
+                    <div class="icono-contacto verde">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>info@medigo.pe</p>
+                </div>
+
+                <div class="tarjeta-contacto">
+                    <div class="icono-contacto rosa">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <h3>Dirección</h3>
+                    <p>Lima, Perú</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-contenido">
+            <div class="logo-footer">
+                <div class="logo-icono">
+                    <i class="fa fa-heartbeat"></i>
+                </div>
+                <span class="font-bold text-xl">MediGo</span>
+            </div>
+            <p class="eslogan">ATENCIÓN MÉDICA RÁPIDA Y SEGURA, 24/7.</p>
+            <p class="derechos">© 2026 MediGo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts básicos -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+<!-- Prueba GitHub -->

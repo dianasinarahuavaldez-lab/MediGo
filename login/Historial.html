@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Médico Inicial | MediGo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.historial.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <div class="encabezado">
+
+            <div class="portal">
+                <i class="fa fa-user-circle"></i>
+                <span>Portal Paciente</span>
+            </div>
+
+            <h1>Historial médico inicial</h1>
+
+        </div>
+
+        <div class="formulario">
+
+            <div class="aviso">
+
+                <i class="fa fa-shield"></i>
+
+                <span>
+                    Información confidencial. Solo visible para ti y tu médico tratante.
+                </span>
+
+            </div>
+
+            <div class="grupo">
+                <label for="tipoSangre">Tipo de sangre</label>
+
+                <select id="tipoSangre">
+                    <option value="">Seleccionar...</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                </select>
+            </div>
+
+            <div class="grupo">
+                <label for="alergias">Alergias conocidas</label>
+
+                <textarea id="alergias" placeholder="Ej: Penicilina, Polen, Mariscos..."></textarea>
+            </div>
+
+            <div class="grupo">
+                <label for="enfermedades">Enfermedades crónicas</label>
+
+                <textarea id="enfermedades" placeholder="Ej: Diabetes, Hipertensión..."></textarea>
+            </div>
+
+            <div class="grupo">
+                <label for="contactoEmergencia">Contacto de emergencia</label>
+
+                <input type="text" id="contactoEmergencia" placeholder="Nombre completo">
+            </div>
+
+            <div class="grupo">
+                <label for="telefonoEmergencia">Teléfono de emergencia</label>
+
+                <input type="text" id="telefonoEmergencia" maxlength="9" placeholder="999999999">
+            </div>
+
+            <div class="botones">
+
+                <button type="button" class="btn-atras">
+                    Atrás
+                </button>
+
+                <button type="button" class="btn-crear" onclick="finalizarRegistro()">
+                    Crear cuenta
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="historial.js"></script>
+
+</body>
+
+</html>
